@@ -4,19 +4,11 @@
 #include <string>
 #include <iostream>
 
-
-int main()
+int main(int argc, char *argv[])
 {
-	std::string str = "HI THIS IS BRAIN";
-	std::string *stringPTR = &str;
-	std::string &stringREF = str;
+	if (argc != 2)
+		return (0);
+	std::string str(argv[1]);
 	
-	std::cout << "str  = " << str << std::endl;
-	std::cout << "&str = " << &str << std::endl;
-	std::cout << "PTR  = " << stringPTR << std::endl;
-	std::cout << "&PTR = " << &stringPTR << std::endl;
-	std::cout << "REF  = " << stringREF << std::endl;
-	std::cout << "&REF = " << &stringREF << std::endl;
-
 	return (0);
 }
