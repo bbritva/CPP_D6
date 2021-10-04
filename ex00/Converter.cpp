@@ -4,17 +4,29 @@
 
 #include "Converter.hpp"
 
-Converter::Converter()
-{}
+Converter::Converter(std::string str);
+{
+    int     int_res;
+    char    char_res;
+    float   float_res;
+    double  double_res;
+
+	isValid = true;
+    if (getValue(str, int_res))
+        simpleConvert(int_res);
+    else if (getValue(str, char_res))
+        simpleConvert(char_res);
+    else if (getValue(str, float_res))
+        simpleConvert(float_res);
+    else if (getValue(str, double_res))
+        simpleConvert(double_res);
+    else
+        isValid = false;
+    //вся конвертация при создании объекта
+}
 
 Converter::~Converter()
 {
-}
-
-void Converter::justDoIt(std::string str)
-{
-	
-
 }
 
 bool Converter::getValue(std::string str, int &res)

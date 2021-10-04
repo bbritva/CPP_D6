@@ -13,21 +13,23 @@ private:
 	int		int_value;
 	float	float_value;
 	double	double_value;
+	bool	isValid;
 
-
-public:
-	Converter();
-	virtual ~Converter();
-	
-	void justDoIt(std::string str);
 	bool getValue(std::string str, int &res);
 	bool getValue(std::string str, float &res);
 	bool getValue(std::string str, double &res);
 	bool getValue(std::string str, char &res);
-	bool simpleConvert(int &res);
-	bool simpleConvert(float &res);
-	bool simpleConvert(double &res);
-	bool simpleConvert(char &res);
+	void simpleConvert(int &res);
+	void simpleConvert(float &res);
+	void simpleConvert(double &res);
+	void simpleConvert(char &res);
+
+
+public:
+	Converter(std::string str);
+	virtual ~Converter();
+	
+	void showResult();
 };
 
 
