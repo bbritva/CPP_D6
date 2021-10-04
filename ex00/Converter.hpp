@@ -8,7 +8,6 @@ class Converter
 {
 private:
   Converter();
-  std::string str;
 
 	char	char_value;
 	int		int_value;
@@ -28,10 +27,21 @@ private:
 
 public:
 	Converter(std::string str);
-	virtual ~Converter();
-	
-	void showResult();
+	Converter(Converter &other);
+  Converter& operator=(Converter const &other);
+
+  char getCharValue() const;
+  int getIntValue() const;
+  float getFloatValue() const;
+  bool getIsValid() const;
+
+  double getDoubleValue() const;
+
+  virtual ~Converter();
+
 };
+
+std::ostream& operator<<(std::ostream &stream, const Converter &conv);
 
 
 #endif //CONVERTER_HPP

@@ -126,11 +126,63 @@ Converter::Converter() : char_value(0), int_value(0), float_value(0), double_val
 {
 }
 
-void Converter::showResult()
+Converter::Converter(Converter &other) :  char_value(other.char_value),
+                                          int_value(other.int_value),
+                                          float_value(other.float_value),
+                                          double_value(other.double_value),
+                                          isValid(other.isValid)
 {
-  std::cout << "int_value = " << int_value << "\n";
-  std::cout << "char_value = " << char_value << "\n";
-  std::cout << "float_value = " << float_value << "\n";
-  std::cout << "double_value = " << double_value << "\n";
+}
+
+std::ostream& operator<<(std::ostream &stream, const Converter &conv)
+{
+  if (conv.getIsValid())
+  {
+    stream << "int_value = " << conv.getIntValue() << "\n";
+    stream << "char_value = " << conv.getCharValue() << "\n";
+    stream << "float_value = " << conv.getFloatValue() << "\n";
+    stream << "double_value = " << conv.getDoubleValue() << "\n";
+  }
+  else
+    stream << "Wrong argument!\n";
+  return stream;
 
 }
+
+Converter &Converter::operator=(const Converter &other)
+{
+  if (this == &other)
+    return (*this);
+  this->int_value = other.int_value;
+  this->char_value = other.char_value;
+  this->float_value = other.float_value;
+  this->double_value = other.double_value;
+  this->isValid = other.isValid;
+  return (*this);
+}
+
+char Converter::getCharValue() const
+{
+  return char_value;
+}
+
+int Converter::getIntValue() const
+{
+  return int_value;
+}
+
+float Converter::getFloatValue() const
+{
+  return float_value;
+}
+
+double Converter::getDoubleValue() const
+{
+  return double_value;
+}
+
+bool Converter::getIsValid() const
+{
+  return isValid;
+}
+
