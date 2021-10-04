@@ -45,9 +45,9 @@ bool Converter::getValue(std::string str, int &res)
 
 bool Converter::getValue(std::string str, char &res)
 {
-    if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')
+    if (str.length() == 1)
     {
-        res = str[1];
+        res = str[0];
         return true;
     }
     return false;

@@ -8,7 +8,6 @@ int main(int argc, char *argv[])
 		return (0);
 	std::string str(argv[1]);
 	Converter conv(str);
-  conv.showResult();
-
+  std::cout << conv;
 	return (0);
 }
