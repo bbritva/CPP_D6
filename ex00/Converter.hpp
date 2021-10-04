@@ -24,10 +24,10 @@ public:
 	bool getValue(std::string str, float &res);
 	bool getValue(std::string str, double &res);
 	bool getValue(std::string str, char &res);
-	bool simpleConvert(std::string str, int &res);
-	bool simpleConvert(std::string str, float &res);
-	bool simpleConvert(std::string str, double &res);
-	bool simpleConvert(std::string str, char &res);
+	bool simpleConvert(int &res);
+	bool simpleConvert(float &res);
+	bool simpleConvert(double &res);
+	bool simpleConvert(char &res);
 };
 
 
