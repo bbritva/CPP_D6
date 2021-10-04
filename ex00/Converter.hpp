@@ -7,7 +7,8 @@
 class Converter
 {
 private:
-	std::string str;
+  Converter();
+  std::string str;
 
 	char	char_value;
 	int		int_value;
