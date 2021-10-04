@@ -31,16 +31,12 @@ bool Converter::getValue(std::string str, int &res) {
 }
 
 bool Converter::getValue(std::string str, char &res) {
-    // try {
-    //     // res = std::stoi(str);
-    //     // return true;
-    // }
-    // catch(std::invalid_argument e) {
-    //     // return false;
-    // }
-    // catch(std::out_of_range e) {
-        return false;
+    if (lenght(str) == 3 && str[0] == '\'' && str[2] == '\'')
+    {
+        res = str[1];
+        return true;
     }
+    return false;
 }
 
 bool Converter::getValue(std::string str, float &res) {
