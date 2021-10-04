@@ -29,10 +29,11 @@ Converter::~Converter()
 {
 }
 
-bool Converter::getValue(std::string str, int &res)
+bool Converter::getValue(std::string str, double &res)
 {
     try {
-        res = std::stoi(str);
+    	const char *s = str.c_str();
+        res = strtod(s, NULL);
         return true;
     }
     catch(std::invalid_argument e) {
