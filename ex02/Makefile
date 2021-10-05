@@ -2,9 +2,7 @@ NAME		=	exec
 CPP			=	clang++ $(CFLAGS)
 RM			=	rm -f
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g3
-SRCS		=	main.cpp Base.cpp PresidentialPardonForm.cpp \
-                                  RobotomyRequestForm.cpp \
-                                  ShrubberyCreationForm.cpp
+SRCS		=	main.cpp Base.cpp A.cpp B.cpp C.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 CYAN		=	\x1B[36m
 MAGENTA		=	\x1B[35m

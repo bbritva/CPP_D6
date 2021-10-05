@@ -1,6 +1,10 @@
 #ifndef Bureaucrat_HPP
 #define Bureaucrat_HPP
 
+#include <string>
+#include <iostream>
+
+
 class Base
 {
 public:
