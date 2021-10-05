@@ -29,7 +29,7 @@ Converter::~Converter()
 {
 }
 
-bool Converter::getValue(std::string str, double &res)
+bool Converter::getValue(std::string str, int &res)
 {
     try {
     	const char *s = str.c_str();
