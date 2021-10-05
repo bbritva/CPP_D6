@@ -17,8 +17,6 @@ class C : public Base
 {
 public:
 	C();
-	C(C &other);
-	C & operator=(C const &other);
 	~C();
 };
 

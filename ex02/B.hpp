@@ -15,8 +15,6 @@ class B : public Base
 {
 public:
 	B();
-	B(B &other);
-	B & operator=(B const &other);
 	~B();
 };
 

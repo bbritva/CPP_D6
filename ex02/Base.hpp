@@ -4,11 +4,13 @@
 #include <string>
 #include <iostream>
 
+#define IDENTIFY " obj identified.\n"
+#define CREATE " obj created -----> "
 
 class Base
 {
 public:
-	virtual ~Base() = 0;
+	virtual ~Base(){};
 };
 
 #endif //Bureaucrat_HPP
