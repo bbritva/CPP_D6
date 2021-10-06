@@ -10,6 +10,7 @@ Converter::Converter(std::string str)
     double  double_res;
 
 	isValid = true;
+  flags = 0;
   const char *cstr = str.c_str();
   char *ptr;
   double_res = strtod(cstr, &ptr);
@@ -26,68 +27,20 @@ Converter::~Converter()
 {
 }
 
-bool Converter::getValue(std::string str, int &res)
-{
-    try {
-    	const char *s = str.c_str();
-        res = strtod(s, NULL);
-        return true;
-    }
-    catch(std::invalid_argument e) {
-        return false;
-    }
-    catch(std::out_of_range e) {
-        return false;
-    }
-}
-
-bool Converter::getValue(std::string str, char &res)
-{
-    if (str.length() == 1)
-    {
-        res = str[0];
-        return true;
-    }
-    return false;
-}
-
-bool Converter::getValue(std::string str, float &res)
-{
-    try {
-        res = std::stof(str);
-        return true;
-    }
-    catch(std::invalid_argument e) {
-        return false;
-    }
-    catch(std::out_of_range e) {
-        return false;
-    }
-}
-
-bool Converter::getValue(std::string str, double &res)
-{
-    try {
-        res = std::stod(str);
-        return true;
-    }
-    catch(std::invalid_argument e) {
-        return false;
-    }
-    catch(std::out_of_range e) {
-        return false;
-    }
-}
-
 void Converter::simpleConvert(double &res)
 {
+  if (res <= INT32_MAX && res >= INT32_MIN)
+  {
     int_value = static_cast<int>(res);
-    float_value = static_cast<float>(res);
+    flags |= INT_OK;
+  }
+  float_value = static_cast<float>(res);
     double_value = res;
-    if (int_value >= 0 && int_value <= 256)
-        char_value = static_cast<char>(int_value);
-    else
-        char_value = 0;
+    if (flags & INT_OK && int_value >= 0 && int_value <= 256)
+    {
+      char_value = static_cast<char>(int_value);
+      flags |= CHAR_OK;
+    }
 }
 
 Converter::Converter() : char_value(0), int_value(0), float_value(0), double_value(0), isValid(false)
@@ -106,8 +59,14 @@ std::ostream& operator<<(std::ostream &stream, const Converter &conv)
 {
   if (conv.getIsValid())
   {
-    stream << "int_value = " << conv.getIntValue() << "\n";
-    stream << "char_value = " << conv.getCharValue() << "\n";
+    if (conv.getFlags() & INT_OK)
+      stream << "int_value = " << conv.getIntValue() << "\n";
+    else
+      stream << "int_value = " << "Impossible" << "\n";
+    if (conv.getFlags() & CHAR_OK)
+      stream << "char_value = " << conv.getCharValue() << "\n";
+    else
+      stream << "char_value = " << "Impossible" << "\n";
     stream << "float_value = " << conv.getFloatValue() << "\n";
     stream << "double_value = " << conv.getDoubleValue() << "\n";
   }
@@ -152,5 +111,10 @@ double Converter::getDoubleValue() const
 bool Converter::getIsValid() const
 {
   return isValid;
+}
+
+uint8_t Converter::getFlags() const
+{
+  return flags;
 }
 
