@@ -64,7 +64,12 @@ std::ostream& operator<<(std::ostream &stream, const Converter &conv)
     else
       stream << "int_value = " << "Impossible" << "\n";
     if (conv.getFlags() & CHAR_OK)
-      stream << "char_value = " << conv.getCharValue() << "\n";
+    {
+      if (std::isprint(conv.getCharValue()))
+        stream << "char_value = \'" << conv.getCharValue() << "\'\n";
+      else
+        stream << "char_value = " << "Not printable" << "\n";
+    }
     else
       stream << "char_value = " << "Impossible" << "\n";
     stream << "float_value = " << conv.getFloatValue() << "\n";
