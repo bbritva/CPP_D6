@@ -1,7 +1,7 @@
-NAME		=	exec
+NAME		=	convert
 CPP			=	clang++ $(CFLAGS)
 RM			=	rm -f
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror
 SRCS		=	main.cpp Converter.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 CYAN		=	\x1B[36m

@@ -43,7 +43,7 @@ void Converter::simpleConvert(double &res)
     }
 }
 
-Converter::Converter() : char_value(0), int_value(0), float_value(0), double_value(0), isValid(false)
+Converter::Converter() : char_value(0), int_value(0), float_value(0), double_value(0), isValid(false), flags(0)
 {
 }
 
@@ -51,7 +51,8 @@ Converter::Converter(Converter &other) :  char_value(other.char_value),
                                           int_value(other.int_value),
                                           float_value(other.float_value),
                                           double_value(other.double_value),
-                                          isValid(other.isValid)
+                                          isValid(other.isValid),
+                                          flags(other.flags)
 {
 }
 
@@ -96,6 +97,7 @@ Converter &Converter::operator=(const Converter &other)
   this->float_value = other.float_value;
   this->double_value = other.double_value;
   this->isValid = other.isValid;
+  this->flags = other.flags;
   return (*this);
 }
 
