@@ -72,9 +72,15 @@ std::ostream& operator<<(std::ostream &stream, const Converter &conv)
     }
     else
       stream << "char_value = " << "Impossible" << "\n";
-    stream << "float_value = " << conv.getFloatValue() << "\n";
-    stream << "double_value = " << conv.getDoubleValue() << "\n";
-  }
+    if (conv.getFloatValue() == static_cast<float>(static_cast<long long>(conv.getFloatValue())))
+      stream << "float_value = " << conv.getFloatValue() << ".0f\n";
+    else
+      stream << "float_value = " << conv.getFloatValue() << "f\n";
+    if (conv.getDoubleValue() == static_cast<float>(static_cast<long long>(conv.getDoubleValue())))
+      stream << "double_value = " << conv.getDoubleValue() << ".0\n";
+    else
+      stream << "double_value = " << conv.getDoubleValue() << "\n";
+}
   else
     stream << "Wrong argument!\n";
   return stream;
