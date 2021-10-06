@@ -3,26 +3,23 @@
 //
 
 #include "Converter.hpp"
+#include <cstring>
 
 Converter::Converter(std::string str)
 {
-    int     int_res;
-    char    char_res;
-    float   float_res;
     double  double_res;
 
 	isValid = true;
-    if (getValue(str, float_res))
-        simpleConvert(float_res);
-    else if (getValue(str, double_res))
-        simpleConvert(double_res);
-    else if (getValue(str, int_res))
-        simpleConvert(int_res);
-    else if (getValue(str, char_res))
-        simpleConvert(char_res);
-    else
-        isValid = false;
-    //вся конвертация при создании объекта
+  const char *cstr = str.c_str();
+  char *ptr;
+  double_res = strtod(cstr, &ptr);
+  if (cstr == ptr)
+  {
+    isValid = false;
+    std::cout << "Err\n";
+  }
+  else
+    simpleConvert(double_res);
 }
 
 Converter::~Converter()
@@ -80,36 +77,6 @@ bool Converter::getValue(std::string str, double &res)
     catch(std::out_of_range e) {
         return false;
     }
-}
-
-void Converter::simpleConvert(int &res)
-{
-    int_value = res;
-    float_value = static_cast<float>(res);
-    double_value = static_cast<double>(res);
-    if (res >= 0 && res <= 256)
-        char_value = res;
-    else
-        char_value = 0;
-}
-
-void Converter::simpleConvert(char &res)
-{
-    int_value = res;
-    float_value = static_cast<float>(int_value);
-    double_value = static_cast<double>(int_value);
-    char_value = res;
-}
-
-void Converter::simpleConvert(float &res)
-{
-    int_value = static_cast<int>(res);
-    float_value = res;
-    double_value = static_cast<double>(res);
-    if (int_value >= 0 && int_value <= 256)
-        char_value = int_value;
-    else
-        char_value = 0;
 }
 
 void Converter::simpleConvert(double &res)
