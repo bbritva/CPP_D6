@@ -141,7 +141,7 @@ std::ostream& operator<<(std::ostream &stream, const Converter &conv)
   {
     stream << "int_value = " << conv.getIntValue() << "\n";
     stream << "char_value = " << conv.getCharValue() << "\n";
-    stream << "float_value = " << conv.getFloatValue() << "\n";
+    stream << "float_value = " << conv.getFloatValue() << "f\n";
     stream << "double_value = " << conv.getDoubleValue() << "\n";
   }
   else
