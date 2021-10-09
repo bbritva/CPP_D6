@@ -1,4 +1,4 @@
-NAME		=	exec
+NAME		=	convert
 CPP			=	clang++ $(CFLAGS)
 RM			=	rm -f
 CFLAGS		=	-Wall -Wextra -Werror

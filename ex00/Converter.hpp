@@ -5,6 +5,9 @@
 #include <iostream>
 #include <cstdlib>
 
+#define INT_OK 1
+#define CHAR_OK 1 << 1
+
 class Converter
 {
 private:
@@ -15,20 +18,17 @@ private:
 	float	float_value;
 	double	double_value;
 	bool	isValid;
+  uint8_t flags;
 
-	bool getValue(std::string str, int &res);
-	bool getValue(std::string str, float &res);
-	bool getValue(std::string str, double &res);
-	bool getValue(std::string str, char &res);
-	void simpleConvert(int &res);
-	void simpleConvert(float &res);
 	void simpleConvert(double &res);
-	void simpleConvert(char &res);
 
 
 public:
 	Converter(std::string str);
 	Converter(Converter &other);
+
+  uint8_t getFlags() const;
+
   Converter& operator=(Converter const &other);
 
   char getCharValue() const;
