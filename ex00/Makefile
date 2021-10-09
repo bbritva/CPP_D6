@@ -1,7 +1,7 @@
 NAME		=	convert
 CPP			=	clang++ $(CFLAGS)
 RM			=	rm -f
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 SRCS		=	main.cpp Converter.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 CYAN		=	\x1B[36m
@@ -25,7 +25,7 @@ fclean:		clean
 
 re:			fclean all
 
-%.o:		%.cpp
+%.o:		%.cpp %.hpp
 			$(CPP) -c $< -o $@
 			echo $@ compilled
 
