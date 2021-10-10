@@ -4,6 +4,9 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
+#include <limits.h>
+#include <stdint.h>
 
 #define INT_OK 1
 #define CHAR_OK 1 << 1

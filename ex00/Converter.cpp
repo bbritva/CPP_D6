@@ -3,7 +3,6 @@
 //
 
 #include "Converter.hpp"
-#include <cstring>
 
 Converter::Converter(std::string str)
 {
