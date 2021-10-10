@@ -71,12 +71,14 @@ std::ostream &operator<<(std::ostream &stream, const Converter &conv)
 		} else
 			stream << "char_value = " << "Impossible" << "\n";
 		if (conv.getFloatValue() ==
-			static_cast<float>(static_cast<long long>(conv.getFloatValue())))
+			static_cast<float>(static_cast<long long>(conv.getFloatValue())) &&
+			conv.getFloatValue() < 1000000 && conv.getFloatValue() > -1000000)
 			stream << "float_value = " << conv.getFloatValue() << ".0f\n";
 		else
 			stream << "float_value = " << conv.getFloatValue() << "f\n";
 		if (conv.getDoubleValue() ==
-			static_cast<float>(static_cast<long long>(conv.getDoubleValue())))
+			static_cast<float>(static_cast<long long>(conv.getDoubleValue())) &&
+			conv.getFloatValue() < 1000000 && conv.getFloatValue() > -1000000)
 			stream << "double_value = " << conv.getDoubleValue() << ".0\n";
 		else
 			stream << "double_value = " << conv.getDoubleValue() << "\n";
